@@ -7,5 +7,8 @@ from .models import UserProfile
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
+    """
+    Signal to create a user profile when a new user is created in the system.
+    """
     if created:
         UserProfile.objects.create(user=instance)
